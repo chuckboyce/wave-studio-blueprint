@@ -45,7 +45,7 @@ const Testimonials = () => {
               <div
                 key={index}
                 ref={ref}
-                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} bg-card rounded-2xl p-8 shadow-card hover-lift hover-scale`}
+                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} bg-card rounded-2xl p-8 shadow-card hover-lift`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
               <Quote className="w-10 h-10 text-primary/30 mb-6" />

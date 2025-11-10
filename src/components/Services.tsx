@@ -55,15 +55,15 @@ const Services = () => {
           {services.map((service, index) => {
             const { ref, isVisible } = useScrollFadeIn();
             const { ref: animRef, isInView } = useInViewAnimation();
-            // Animate first 3 service icons
-            const shouldAnimate = index < 3;
-            const animationClass = index === 0 ? 'animate-breathe' : index === 1 ? 'animate-breathe-slow' : index === 2 ? 'animate-breathe' : '';
+            // Cap animated elements: only animate first 2 service icons (already have 1 from ValueProps + hero = 4 total)
+            const shouldAnimate = index < 2;
+            const animationClass = index === 0 ? 'animate-breathe' : 'animate-breathe-slow';
             
             return (
               <div
                 key={index}
                 ref={ref}
-                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} group bg-card rounded-2xl p-8 shadow-card hover-lift hover-scale ${
+                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} group bg-card rounded-2xl p-8 shadow-card hover-lift ${
                   service.highlight ? "border-2 border-primary/30" : ""
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}

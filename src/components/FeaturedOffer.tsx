@@ -50,7 +50,7 @@ const FeaturedOffer = () => {
           </div>
 
           {/* Offer Card */}
-          <div ref={cardRef} className={`scroll-fade-in ${cardVisible ? 'is-visible' : ''} bg-gradient-to-br from-card to-secondary/30 rounded-3xl p-8 sm:p-12 shadow-wave border border-border/50 hover-lift`}>
+          <div ref={cardRef} className={`scroll-fade-in ${cardVisible ? 'is-visible' : ''} bg-gradient-to-br from-card to-secondary/30 rounded-3xl p-8 sm:p-12 shadow-wave border border-border/50`}>
             <div className="grid md:grid-cols-2 gap-8">
               {/* Left: What's Included */}
               <div>

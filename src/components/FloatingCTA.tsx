@@ -24,7 +24,7 @@ const FloatingCTA = () => {
     >
       <Button
         size="lg"
-        className="shadow-2xl hover:shadow-wave transition-all hover:scale-105 group"
+        className="shadow-2xl transition-transform hover:scale-105 group"
         asChild
       >
         <a href="#cta-refresh" aria-label="Start your website refresh">

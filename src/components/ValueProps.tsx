@@ -32,7 +32,7 @@ const ValueProps = () => {
               <div
                 key={index}
                 ref={ref}
-                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} group bg-card rounded-2xl p-8 shadow-card hover-lift hover-scale`}
+                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} group bg-card rounded-2xl p-8 shadow-card hover-lift`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div 
