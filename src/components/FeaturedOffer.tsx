@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
+import heroImage from "@/assets/hero-wave.jpg";
 
 const FeaturedOffer = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollFadeIn();
+  const { ref: sliderRef, isVisible: sliderVisible } = useScrollFadeIn();
+  const { ref: cardRef, isVisible: cardVisible } = useScrollFadeIn();
+
   const features = [
     "Complete website redesign",
     "Mobile-first optimization",
@@ -16,7 +23,7 @@ const FeaturedOffer = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div ref={headerRef} className={`scroll-fade-in ${headerVisible ? 'is-visible' : ''} text-center mb-12`}>
             <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-4">
               Limited Time Offer
             </div>
@@ -32,8 +39,18 @@ const FeaturedOffer = () => {
             </p>
           </div>
 
+          {/* Before/After Example */}
+          <div ref={sliderRef} className={`scroll-fade-in ${sliderVisible ? 'is-visible' : ''} mb-12`}>
+            <BeforeAfterSlider
+              beforeImage={heroImage}
+              afterImage={heroImage}
+              beforeAlt="Before website redesign - outdated design"
+              afterAlt="After website redesign - modern AI-optimized design"
+            />
+          </div>
+
           {/* Offer Card */}
-          <div className="bg-gradient-to-br from-card to-secondary/30 rounded-3xl p-8 sm:p-12 shadow-wave border border-border/50">
+          <div ref={cardRef} className={`scroll-fade-in ${cardVisible ? 'is-visible' : ''} bg-gradient-to-br from-card to-secondary/30 rounded-3xl p-8 sm:p-12 shadow-wave border border-border/50 hover-lift`}>
             <div className="grid md:grid-cols-2 gap-8">
               {/* Left: What's Included */}
               <div>

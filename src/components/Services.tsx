@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Globe, Database, Brain, Sparkles, ArrowRight } from "lucide-react";
+import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 
 const Services = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollFadeIn();
   const services = [
     {
       icon: Globe,
@@ -38,7 +40,7 @@ const Services = () => {
     <section id="services" className="py-24 bg-gradient-subtle">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div ref={headerRef} className={`scroll-fade-in ${headerVisible ? 'is-visible' : ''} text-center max-w-3xl mx-auto mb-16`}>
           <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-4 text-foreground">
             Services That <span className="bg-gradient-wave bg-clip-text text-transparent">Scale</span>
           </h2>
@@ -49,13 +51,17 @@ const Services = () => {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`group bg-card rounded-2xl p-8 shadow-card hover:shadow-wave transition-all duration-300 hover:-translate-y-1 ${
-                service.highlight ? "border-2 border-primary/30" : ""
-              }`}
-            >
+          {services.map((service, index) => {
+            const { ref, isVisible } = useScrollFadeIn();
+            return (
+              <div
+                key={index}
+                ref={ref}
+                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} group bg-card rounded-2xl p-8 shadow-card hover-lift hover-scale ${
+                  service.highlight ? "border-2 border-primary/30" : ""
+                }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
               {service.highlight && (
                 <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
                   Featured Offer
@@ -80,7 +86,8 @@ const Services = () => {
                 </a>
               </Button>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

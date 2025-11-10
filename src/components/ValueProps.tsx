@@ -1,4 +1,5 @@
 import { Sparkles, Heart, Handshake } from "lucide-react";
+import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 
 const ValueProps = () => {
   const values = [
@@ -23,18 +24,23 @@ const ValueProps = () => {
     <section className="py-20 bg-gradient-subtle">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <div
-              key={index}
-              className="group bg-card rounded-2xl p-8 shadow-card hover:shadow-wave transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <value.icon className="w-7 h-7 text-primary" />
+          {values.map((value, index) => {
+            const { ref, isVisible } = useScrollFadeIn();
+            return (
+              <div
+                key={index}
+                ref={ref}
+                className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} group bg-card rounded-2xl p-8 shadow-card hover-lift hover-scale`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                  <value.icon className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-heading text-2xl font-bold mb-3 text-card-foreground">{value.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
               </div>
-              <h3 className="font-heading text-2xl font-bold mb-3 text-card-foreground">{value.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
