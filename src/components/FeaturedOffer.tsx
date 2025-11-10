@@ -20,7 +20,7 @@ const FeaturedOffer = () => {
             <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-4">
               Limited Time Offer
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
+            <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-4 text-foreground">
               Pay What You Want
               <br />
               <span className="bg-gradient-wave bg-clip-text text-transparent">
@@ -37,7 +37,7 @@ const FeaturedOffer = () => {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Left: What's Included */}
               <div>
-                <h3 className="text-2xl font-bold mb-6 text-card-foreground">What's Included</h3>
+                <h3 className="font-heading text-2xl font-bold mb-6 text-card-foreground">What's Included</h3>
                 <ul className="space-y-4">
                   {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">

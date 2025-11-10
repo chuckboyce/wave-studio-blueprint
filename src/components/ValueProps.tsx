@@ -31,7 +31,7 @@ const ValueProps = () => {
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                 <value.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-card-foreground">{value.title}</h3>
+              <h3 className="font-heading text-2xl font-bold mb-3 text-card-foreground">{value.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{value.description}</p>
             </div>
           ))}

@@ -39,7 +39,7 @@ const Services = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-4 text-foreground">
             Services That <span className="bg-gradient-wave bg-clip-text text-transparent">Scale</span>
           </h2>
           <p className="text-xl text-muted-foreground">
@@ -66,7 +66,7 @@ const Services = () => {
                 <service.icon className="w-6 h-6 text-primary" />
               </div>
 
-              <h3 className="text-2xl font-bold mb-3 text-card-foreground">{service.title}</h3>
+              <h3 className="font-heading text-2xl font-bold mb-3 text-card-foreground">{service.title}</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
 
               <Button

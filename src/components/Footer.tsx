@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold bg-gradient-wave bg-clip-text text-transparent mb-4">
+            <h3 className="font-heading text-2xl font-bold bg-gradient-wave bg-clip-text text-transparent mb-4">
               FoundryWave
             </h3>
             <p className="text-white/70 mb-4 max-w-md">
@@ -28,7 +28,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-heading font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-white/70">
               <li>
                 <a href="#services" className="hover:text-primary transition-colors">Services</a>
@@ -47,7 +47,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            <h4 className="font-heading font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-white/70">
               <li>
                 <a href="#offer" className="hover:text-primary transition-colors">Website Refresh</a>

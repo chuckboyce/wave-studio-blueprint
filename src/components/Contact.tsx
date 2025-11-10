@@ -10,7 +10,7 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            <h2 className="font-heading text-4xl sm:text-5xl font-bold mb-4 text-white">
               Let's Build Your Business for the Future
             </h2>
             <p className="text-xl text-white/80">
@@ -24,7 +24,7 @@ const Contact = () => {
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
               <div className="flex items-center gap-3 mb-6">
                 <MessageSquare className="w-6 h-6 text-primary" />
-                <h3 className="text-2xl font-bold text-white">Send a Message</h3>
+                <h3 className="font-heading text-2xl font-bold text-white">Send a Message</h3>
               </div>
 
               <form className="space-y-4">
@@ -75,7 +75,7 @@ const Contact = () => {
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
                 <div className="flex items-center gap-3 mb-4">
                   <Mail className="w-6 h-6 text-primary" />
-                  <h3 className="text-2xl font-bold text-white">Direct Contact</h3>
+                  <h3 className="font-heading text-2xl font-bold text-white">Direct Contact</h3>
                 </div>
                 <p className="text-white/80 mb-6">
                   Prefer to reach out directly? We're here to help.
@@ -100,7 +100,7 @@ const Contact = () => {
               </div>
 
               <div className="bg-primary/20 backdrop-blur-lg rounded-2xl p-8 border border-primary/30">
-                <h4 className="text-lg font-bold text-white mb-3">What happens next?</h4>
+                <h4 className="font-heading text-lg font-bold text-white mb-3">What happens next?</h4>
                 <ul className="space-y-3 text-white/80 text-sm">
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">1.</span>
