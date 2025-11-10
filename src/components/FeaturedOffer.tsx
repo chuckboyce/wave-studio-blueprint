@@ -12,7 +12,7 @@ const FeaturedOffer = () => {
   ];
 
   return (
-    <section id="offer" className="py-24 bg-background">
+    <section id="cta-refresh" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
@@ -64,7 +64,7 @@ const FeaturedOffer = () => {
                     className="w-full bg-white text-primary hover:bg-white/90 font-semibold shadow-lg group"
                     asChild
                   >
-                    <a href="#contact">
+                    <a href="#contact" aria-label="Claim your website refresh offer">
                       Claim Your Refresh
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </a>

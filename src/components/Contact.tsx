@@ -33,6 +33,8 @@ const Contact = () => {
                     type="text"
                     placeholder="Your Name"
                     className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    aria-label="Your name"
+                    required
                   />
                 </div>
                 <div>
@@ -40,6 +42,8 @@ const Contact = () => {
                     type="email"
                     placeholder="Your Email"
                     className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    aria-label="Your email address"
+                    required
                   />
                 </div>
                 <div>
@@ -47,6 +51,7 @@ const Contact = () => {
                     type="tel"
                     placeholder="Phone (Optional)"
                     className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    aria-label="Your phone number"
                   />
                 </div>
                 <div>
@@ -54,9 +59,11 @@ const Contact = () => {
                     placeholder="Tell us about your project..."
                     rows={4}
                     className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    aria-label="Project details"
+                    required
                   />
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90 shadow-wave group">
+                <Button className="w-full bg-primary hover:bg-primary/90 shadow-wave group" aria-label="Submit contact form">
                   Start the Conversation
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>

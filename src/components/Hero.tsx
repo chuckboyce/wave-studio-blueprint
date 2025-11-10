@@ -11,6 +11,7 @@ const Hero = () => {
           src={heroImage}
           alt="Digital transformation and AI technology"
           className="w-full h-full object-cover"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[hsl(215,100%,8%)]/95 via-[hsl(215,80%,12%)]/90 to-[hsl(193,100%,42%)]/30" />
       </div>
@@ -67,8 +68,8 @@ const Hero = () => {
               className="text-lg px-8 py-6 shadow-wave hover:shadow-xl transition-all group"
               asChild
             >
-              <a href="#offer">
-                Start Your Website Refresh
+              <a href="#cta-refresh" aria-label="Start your website refresh">
+                Get Started
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
@@ -78,7 +79,7 @@ const Hero = () => {
               className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
               asChild
             >
-              <a href="#services">See the AI Audit</a>
+              <a href="#contact" aria-label="Join our newsletter">Join Newsletter</a>
             </Button>
           </div>
 

@@ -8,7 +8,7 @@ const Services = () => {
       title: "Website Refresh",
       description: "Pay What You Want redesign with LLM-ready optimization, mobile-first design, and modern performance.",
       cta: "Start Your Refresh",
-      href: "#offer",
+      href: "#cta-refresh",
       highlight: true,
     },
     {
@@ -74,7 +74,7 @@ const Services = () => {
                 className={service.highlight ? "shadow-wave group/btn" : "group/btn"}
                 asChild
               >
-                <a href={service.href}>
+                <a href={service.href} aria-label={service.cta}>
                   {service.cta}
                   <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </a>
