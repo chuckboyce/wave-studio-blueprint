@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-wave.jpg";
+import { useParallax } from "@/hooks/useParallax";
 
 const Hero = () => {
+  const parallaxOffset = useParallax(0.3);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -16,8 +18,11 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-[hsl(215,100%,8%)]/95 via-[hsl(215,80%,12%)]/90 to-[hsl(193,100%,42%)]/30" />
       </div>
 
-      {/* Animated Wave Pattern */}
-      <div className="absolute inset-0 z-0 opacity-20">
+      {/* Animated Wave Pattern with Parallax */}
+      <div 
+        className="absolute inset-0 z-0 opacity-20"
+        style={{ transform: `translateY(${parallaxOffset * 0.5}px)` }}
+      >
         <svg className="absolute bottom-0 w-full h-64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="hsl(193, 100%, 42%)"
@@ -26,7 +31,7 @@ const Hero = () => {
           >
             <animate
               attributeName="d"
-              dur="10s"
+              dur="15s"
               repeatCount="indefinite"
               values="M0,160L48,144C96,128,192,96,288,101.3C384,107,480,149,576,154.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
                       M0,192L48,181.3C96,171,192,149,288,154.7C384,160,480,192,576,197.3C672,203,768,181,864,170.7C960,160,1056,160,1152,170.7C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;

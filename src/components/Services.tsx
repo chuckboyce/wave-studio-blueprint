@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Globe, Database, Brain, Sparkles, ArrowRight } from "lucide-react";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const Services = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollFadeIn();
@@ -53,6 +54,11 @@ const Services = () => {
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const { ref, isVisible } = useScrollFadeIn();
+            const { ref: animRef, isInView } = useInViewAnimation();
+            // Animate first 3 service icons
+            const shouldAnimate = index < 3;
+            const animationClass = index === 0 ? 'animate-breathe' : index === 1 ? 'animate-breathe-slow' : index === 2 ? 'animate-breathe' : '';
+            
             return (
               <div
                 key={index}
@@ -62,15 +68,22 @@ const Services = () => {
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-              {service.highlight && (
-                <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
-                  Featured Offer
+                {service.highlight && (
+                  <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
+                    Featured Offer
+                  </div>
+                )}
+                
+                <div 
+                  ref={animRef}
+                  className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors"
+                >
+                  <service.icon 
+                    className={`w-6 h-6 text-primary ${
+                      shouldAnimate ? `${animationClass} ${!isInView ? 'animation-paused' : ''}` : ''
+                    }`}
+                  />
                 </div>
-              )}
-              
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary" />
-              </div>
 
               <h3 className="font-heading text-2xl font-bold mb-3 text-card-foreground">{service.title}</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>

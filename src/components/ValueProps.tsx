@@ -1,5 +1,6 @@
 import { Sparkles, Heart, Handshake } from "lucide-react";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const ValueProps = () => {
   const values = [
@@ -26,6 +27,7 @@ const ValueProps = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {values.map((value, index) => {
             const { ref, isVisible } = useScrollFadeIn();
+            const { ref: animRef, isInView } = useInViewAnimation();
             return (
               <div
                 key={index}
@@ -33,8 +35,15 @@ const ValueProps = () => {
                 className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} group bg-card rounded-2xl p-8 shadow-card hover-lift hover-scale`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <value.icon className="w-7 h-7 text-primary" />
+                <div 
+                  ref={animRef}
+                  className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors"
+                >
+                  <value.icon 
+                    className={`w-7 h-7 text-primary ${
+                      index === 0 ? `animate-breathe ${!isInView ? 'animation-paused' : ''}` : ''
+                    }`}
+                  />
                 </div>
                 <h3 className="font-heading text-2xl font-bold mb-3 text-card-foreground">{value.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{value.description}</p>
