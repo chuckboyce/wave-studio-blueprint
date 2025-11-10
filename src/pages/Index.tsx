@@ -20,57 +20,6 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
-
-      {/* Schema.org JSON-LD for SEO */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "FoundryWave",
-          "url": "https://foundrywave.studio",
-          "logo": "https://foundrywave.studio/logo.png",
-          "description": "AI-first websites, CRMs, and automation systems for small businesses. Building the future, one small business at a time.",
-          "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "DE, PA, NJ"
-          },
-          "sameAs": [
-            "https://chuckboyce.com",
-            "https://smallbiz.com"
-          ],
-          "areaServed": ["Delaware", "Pennsylvania", "New Jersey"],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Technology Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Website Refresh",
-                  "description": "Pay What You Want website redesign with LLM-ready optimization"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "SmallBiz CRM Setup",
-                  "description": "Branded GoHighLevel platform setup with automations"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AI Business Audit",
-                  "description": "Identify AI and automation opportunities for growth"
-                }
-              }
-            ]
-          }
-        })}
-      </script>
     </div>
   );
 };
