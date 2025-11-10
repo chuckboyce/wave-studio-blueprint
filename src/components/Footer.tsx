@@ -50,7 +50,7 @@ const Footer = () => {
             <h4 className="font-heading font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-white/70">
               <li>
-                <a href="#offer" className="hover:text-primary transition-colors">Website Refresh</a>
+                <a href="#cta-refresh" className="hover:text-primary transition-colors">Website Refresh</a>
               </li>
               <li>
                 <a href="#services" className="hover:text-primary transition-colors">CRM Setup</a>
