@@ -102,17 +102,38 @@ const Hero = () => {
           </div>
 
           {/* As Seen In */}
-          <div className="mt-16">
+          <div className="mt-16 w-full">
             <p className="text-white/50 text-xs uppercase tracking-widest mb-6">As Seen In</p>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              {mediaLogos.map((logo) => (
-                <img 
-                  key={logo.alt}
-                  src={logo.src} 
-                  alt={logo.alt} 
-                  className="h-6 sm:h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
-                />
-              ))}
+            <div className="relative overflow-hidden">
+              {/* Gradient masks for smooth edges */}
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[hsl(215,100%,8%)] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[hsl(215,100%,8%)] to-transparent z-10 pointer-events-none" />
+              
+              {/* Scrolling container */}
+              <div className="flex animate-marquee">
+                {/* First set of logos */}
+                <div className="flex items-center gap-12 px-6 shrink-0">
+                  {mediaLogos.map((logo) => (
+                    <img 
+                      key={logo.alt}
+                      src={logo.src} 
+                      alt={logo.alt} 
+                      className="h-6 sm:h-8 w-auto opacity-70"
+                    />
+                  ))}
+                </div>
+                {/* Duplicate set for seamless loop */}
+                <div className="flex items-center gap-12 px-6 shrink-0">
+                  {mediaLogos.map((logo) => (
+                    <img 
+                      key={`${logo.alt}-dup`}
+                      src={logo.src} 
+                      alt={logo.alt} 
+                      className="h-6 sm:h-8 w-auto opacity-70"
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
