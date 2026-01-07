@@ -13,19 +13,34 @@ import logoEntrepreneur from "@/assets/logos/entrepreneur.png";
 import logoFastCompany from "@/assets/logos/fast-company.png";
 import logoInfluencive from "@/assets/logos/influencive.png";
 import logoInc from "@/assets/logos/inc.png";
-
-const mediaLogos = [
-  { src: logoAbc, alt: "ABC" },
-  { src: logoNbc, alt: "NBC" },
-  { src: logoCbs, alt: "CBS" },
-  { src: logoCnn, alt: "CNN" },
-  { src: logoFox, alt: "FOX" },
-  { src: logoEntrepreneur, alt: "Entrepreneur" },
-  { src: logoFastCompany, alt: "Fast Company" },
-  { src: logoInfluencive, alt: "Influencive" },
-  { src: logoInc, alt: "Inc." },
-];
-
+const mediaLogos = [{
+  src: logoAbc,
+  alt: "ABC"
+}, {
+  src: logoNbc,
+  alt: "NBC"
+}, {
+  src: logoCbs,
+  alt: "CBS"
+}, {
+  src: logoCnn,
+  alt: "CNN"
+}, {
+  src: logoFox,
+  alt: "FOX"
+}, {
+  src: logoEntrepreneur,
+  alt: "Entrepreneur"
+}, {
+  src: logoFastCompany,
+  alt: "Fast Company"
+}, {
+  src: logoInfluencive,
+  alt: "Influencive"
+}, {
+  src: logoInc,
+  alt: "Inc."
+}];
 const Hero = () => {
   const parallaxOffset = useParallax(0.3);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -70,7 +85,7 @@ const Hero = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl sm:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">We help small businesses look better, run faster, and grow smarter</p>
+          <p className="text-xl sm:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">We help businesses look better, run faster, and grow smarter</p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -113,25 +128,11 @@ const Hero = () => {
               <div className="flex animate-marquee">
                 {/* First set of logos */}
                 <div className="flex items-center gap-12 px-6 shrink-0">
-                  {mediaLogos.map((logo) => (
-                    <img 
-                      key={logo.alt}
-                      src={logo.src} 
-                      alt={logo.alt} 
-                      className="h-6 sm:h-8 w-auto opacity-70"
-                    />
-                  ))}
+                  {mediaLogos.map(logo => <img key={logo.alt} src={logo.src} alt={logo.alt} className="h-6 sm:h-8 w-auto opacity-70" />)}
                 </div>
                 {/* Duplicate set for seamless loop */}
                 <div className="flex items-center gap-12 px-6 shrink-0">
-                  {mediaLogos.map((logo) => (
-                    <img 
-                      key={`${logo.alt}-dup`}
-                      src={logo.src} 
-                      alt={logo.alt} 
-                      className="h-6 sm:h-8 w-auto opacity-70"
-                    />
-                  ))}
+                  {mediaLogos.map(logo => <img key={`${logo.alt}-dup`} src={logo.src} alt={logo.alt} className="h-6 sm:h-8 w-auto opacity-70" />)}
                 </div>
               </div>
             </div>
