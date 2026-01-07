@@ -65,7 +65,7 @@ const Hero = () => {
           <div className="mt-12 flex items-center justify-center gap-8 text-white/70 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span>AI-First Design</span>
+              <span>Future Focused Design</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
