@@ -76,6 +76,23 @@ const Hero = () => {
               <span>Partnership Over Projects</span>
             </div>
           </div>
+
+          {/* As Seen In */}
+          <div className="mt-16">
+            <p className="text-white/50 text-xs uppercase tracking-widest mb-6">As Seen In</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-white/60">
+              <span className="font-semibold text-lg tracking-wide">ABC</span>
+              <span className="font-semibold text-lg tracking-wide">NBC</span>
+              <span className="font-semibold text-lg tracking-wide">CBS</span>
+              <span className="font-semibold text-lg tracking-wide">CNN</span>
+              <span className="font-semibold text-lg tracking-wide hidden sm:inline">Huffington Post</span>
+              <span className="font-semibold text-lg tracking-wide hidden sm:inline">USA Today</span>
+              <span className="font-semibold text-lg tracking-wide hidden md:inline">Entrepreneur</span>
+              <span className="font-semibold text-lg tracking-wide hidden md:inline">Fast Company</span>
+              <span className="font-semibold text-lg tracking-wide hidden lg:inline">Influencive</span>
+              <span className="font-semibold text-lg tracking-wide hidden lg:inline">Inc.</span>
+            </div>
+          </div>
         </div>
       </div>
 
