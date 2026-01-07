@@ -7,6 +7,8 @@ const corsHeaders = {
 
 const GHL_API_BASE = 'https://services.leadconnectorhq.com';
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -31,6 +33,14 @@ serve(async (req) => {
     if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ error: 'Name, email, and message are required' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate email format
+    if (!emailRegex.test(email)) {
+      return new Response(
+        JSON.stringify({ error: 'Please provide a valid email address' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -63,8 +73,8 @@ serve(async (req) => {
     if (!upsertResponse.ok) {
       console.error('GHL upsert error:', upsertData);
       return new Response(
-        JSON.stringify({ error: 'Failed to upsert contact', details: upsertData }),
-        { status: upsertResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: 'Unable to submit your message. Please try again or contact us directly.' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -72,7 +82,7 @@ serve(async (req) => {
     if (!contactId) {
       console.error('No contact ID returned from upsert');
       return new Response(
-        JSON.stringify({ error: 'No contact ID returned' }),
+        JSON.stringify({ error: 'Unable to submit your message. Please try again or contact us directly.' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -111,8 +121,8 @@ serve(async (req) => {
     if (!conversationResponse.ok) {
       console.error('GHL conversation error:', conversationData);
       return new Response(
-        JSON.stringify({ error: 'Failed to create conversation', details: conversationData }),
-        { status: conversationResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: 'Unable to submit your message. Please try again or contact us directly.' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -120,7 +130,7 @@ serve(async (req) => {
     if (!conversationId) {
       console.error('No conversation ID returned');
       return new Response(
-        JSON.stringify({ error: 'No conversation ID returned' }),
+        JSON.stringify({ error: 'Unable to submit your message. Please try again or contact us directly.' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -147,8 +157,8 @@ serve(async (req) => {
     if (!messageResponse.ok) {
       console.error('GHL message error:', messageData);
       return new Response(
-        JSON.stringify({ error: 'Failed to add message', details: messageData }),
-        { status: messageResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: 'Unable to submit your message. Please try again or contact us directly.' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -164,9 +174,8 @@ serve(async (req) => {
 
   } catch (error: unknown) {
     console.error('Error in submit-contact function:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
     return new Response(
-      JSON.stringify({ error: message }),
+      JSON.stringify({ error: 'Unable to submit your message. Please try again or contact us directly.' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
