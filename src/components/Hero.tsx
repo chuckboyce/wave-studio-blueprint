@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
-          alt="Digital transformation and AI technology"
+          alt="FoundryWave digital transformation - AI-powered web design and business automation for small businesses"
           className="w-full h-full object-cover"
           loading="eager"
         />
