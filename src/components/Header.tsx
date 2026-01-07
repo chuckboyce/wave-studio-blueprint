@@ -26,7 +26,9 @@ const Header = () => {
             <img 
               src={logo} 
               alt="FoundryWave - AI-ready web design studio" 
-              className="h-10 w-auto brightness-0 invert"
+              className={`h-10 w-auto transition-all duration-300 ${
+                isScrolled ? "" : "brightness-0 invert"
+              }`}
             />
           </a>
 
