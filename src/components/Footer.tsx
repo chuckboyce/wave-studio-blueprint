@@ -1,3 +1,5 @@
+import logo from "@/assets/logo.webp";
+
 const Footer = () => {
   return (
     <footer className="bg-[hsl(215,100%,8%)] text-white py-12">
@@ -15,9 +17,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h3 className="font-heading text-2xl font-bold bg-gradient-wave bg-clip-text text-transparent mb-4">
-              FoundryWave
-            </h3>
+            <img 
+              src={logo} 
+              alt="FoundryWave" 
+              className="h-10 w-auto brightness-0 invert mb-4"
+            />
             <p className="text-white/70 mb-4 max-w-md">
               Building the future, one small business at a time. AI-first websites, CRMs, and automation systems that make small businesses run like big ones.
             </p>
