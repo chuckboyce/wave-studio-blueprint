@@ -5,6 +5,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const GHL_API_BASE = 'https://services.leadconnectorhq.com';
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -33,60 +35,130 @@ serve(async (req) => {
       );
     }
 
-    console.log('Submitting contact to GHL:', { name, email, phone: phone || 'not provided' });
+    const headers = {
+      'Authorization': `Bearer ${GHL_API_KEY}`,
+      'Content-Type': 'application/json',
+      'Version': '2021-07-28',
+    };
 
-    // Create or update contact in GoHighLevel
-    const ghlResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
+    console.log('Step 1: Upserting contact in GHL:', { name, email, phone: phone || 'not provided' });
+
+    // Step 1: Upsert contact
+    const upsertResponse = await fetch(`${GHL_API_BASE}/contacts/upsert`, {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${GHL_API_KEY}`,
-        'Content-Type': 'application/json',
-        'Version': '2021-07-28',
-      },
+      headers,
       body: JSON.stringify({
         locationId: GHL_LOCATION_ID,
         name,
         email,
         phone: phone || undefined,
-        tags: ['website-contact'],
-        customFields: [],
         source: 'Website Contact Form',
       }),
     });
 
-    const ghlData = await ghlResponse.json();
-    console.log('GHL response status:', ghlResponse.status);
-    console.log('GHL response:', JSON.stringify(ghlData));
+    const upsertData = await upsertResponse.json();
+    console.log('Upsert response status:', upsertResponse.status);
+    console.log('Upsert response:', JSON.stringify(upsertData));
 
-    if (!ghlResponse.ok) {
-      console.error('GHL API error:', ghlData);
+    if (!upsertResponse.ok) {
+      console.error('GHL upsert error:', upsertData);
       return new Response(
-        JSON.stringify({ error: 'Failed to submit contact', details: ghlData }),
-        { status: ghlResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: 'Failed to upsert contact', details: upsertData }),
+        { status: upsertResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // Add a note with the message to the contact
-    if (ghlData.contact?.id) {
-      const noteResponse = await fetch(`https://services.leadconnectorhq.com/contacts/${ghlData.contact.id}/notes`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GHL_API_KEY}`,
-          'Content-Type': 'application/json',
-          'Version': '2021-07-28',
-        },
-        body: JSON.stringify({
-          body: `Website Contact Form Message:\n\n${message}`,
-        }),
-      });
+    const contactId = upsertData.contact?.id;
+    if (!contactId) {
+      console.error('No contact ID returned from upsert');
+      return new Response(
+        JSON.stringify({ error: 'No contact ID returned' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
-      const noteData = await noteResponse.json();
-      console.log('Note creation status:', noteResponse.status);
-      console.log('Note response:', JSON.stringify(noteData));
+    console.log('Step 2: Adding tag to contact:', contactId);
+
+    // Step 2: Add tag to contact
+    const tagResponse = await fetch(`${GHL_API_BASE}/contacts/${contactId}/tags`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        tags: ['website-contact'],
+      }),
+    });
+
+    const tagData = await tagResponse.json();
+    console.log('Tag response status:', tagResponse.status);
+    console.log('Tag response:', JSON.stringify(tagData));
+
+    console.log('Step 3: Creating conversation for contact:', contactId);
+
+    // Step 3: Create conversation
+    const conversationResponse = await fetch(`${GHL_API_BASE}/conversations`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        locationId: GHL_LOCATION_ID,
+        contactId,
+      }),
+    });
+
+    const conversationData = await conversationResponse.json();
+    console.log('Conversation response status:', conversationResponse.status);
+    console.log('Conversation response:', JSON.stringify(conversationData));
+
+    if (!conversationResponse.ok) {
+      console.error('GHL conversation error:', conversationData);
+      return new Response(
+        JSON.stringify({ error: 'Failed to create conversation', details: conversationData }),
+        { status: conversationResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const conversationId = conversationData.conversation?.id;
+    if (!conversationId) {
+      console.error('No conversation ID returned');
+      return new Response(
+        JSON.stringify({ error: 'No conversation ID returned' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    console.log('Step 4: Adding message to conversation:', conversationId);
+
+    // Step 4: Add message to conversation
+    const messageResponse = await fetch(`${GHL_API_BASE}/conversations/messages`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        type: 'Custom',
+        conversationId,
+        contactId,
+        message: `Website Contact Form Submission:\n\nName: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\n\nMessage:\n${message}`,
+        direction: 'inbound',
+      }),
+    });
+
+    const messageData = await messageResponse.json();
+    console.log('Message response status:', messageResponse.status);
+    console.log('Message response:', JSON.stringify(messageData));
+
+    if (!messageResponse.ok) {
+      console.error('GHL message error:', messageData);
+      return new Response(
+        JSON.stringify({ error: 'Failed to add message', details: messageData }),
+        { status: messageResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     return new Response(
-      JSON.stringify({ success: true, contactId: ghlData.contact?.id }),
+      JSON.stringify({ 
+        success: true, 
+        contactId,
+        conversationId,
+        messageId: messageData.message?.id 
+      }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
 
