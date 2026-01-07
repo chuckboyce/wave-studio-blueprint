@@ -47,6 +47,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-6">
             <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Your Unique Voice, Amplified at Scale</span>
             <span className="text-sm font-medium text-primary">AI-Powered Technology Solutions</span>
           </div>
 
