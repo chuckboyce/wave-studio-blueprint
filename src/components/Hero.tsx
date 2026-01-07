@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-wave.jpg";
 import { useParallax } from "@/hooks/useParallax";
+import NewsletterModal from "@/components/NewsletterModal";
 
 // Media logos
 import logoAbc from "@/assets/logos/abc.png";
@@ -43,7 +45,12 @@ const mediaLogos = [{
 }];
 const Hero = () => {
   const parallaxOffset = useParallax(0.3);
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  const [newsletterOpen, setNewsletterOpen] = useState(false);
+
+  return (
+    <>
+    <NewsletterModal open={newsletterOpen} onOpenChange={setNewsletterOpen} />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img src={heroImage} alt="FoundryWave digital transformation - AI-powered web design and business automation for small businesses" className="w-full h-full object-cover" loading="eager" />
@@ -95,8 +102,14 @@ const Hero = () => {
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm" asChild>
-              <a href="#contact" aria-label="Join our newsletter">Join Newsletter</a>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+              onClick={() => setNewsletterOpen(true)}
+              aria-label="Join our newsletter"
+            >
+              Join Newsletter
             </Button>
           </div>
 
@@ -142,6 +155,8 @@ const Hero = () => {
 
       {/* Bottom Gradient Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
-    </section>;
+    </section>
+    </>
+  );
 };
 export default Hero;
