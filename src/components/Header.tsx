@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.webp";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,84 +30,16 @@ const Header = () => {
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-foreground/80 hover:text-foreground transition-colors">
-              Services
-            </a>
-            <a href="#about" className="text-foreground/80 hover:text-foreground transition-colors">
-              About
-            </a>
-            <a href="#testimonials" className="text-foreground/80 hover:text-foreground transition-colors">
-              Case Studies
-            </a>
-            <a href="#contact" className="text-foreground/80 hover:text-foreground transition-colors">
-              Contact
-            </a>
-          </nav>
-
           {/* CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" asChild>
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <Button variant="outline" size="sm" className="sm:size-default" asChild>
               <a href="#contact">Book a Consult</a>
             </Button>
-            <Button asChild className="shadow-wave">
-              <a href="#offer">Start Your Refresh</a>
+            <Button size="sm" className="sm:size-default shadow-wave" asChild>
+              <a href="#contact">Start Your Refresh</a>
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-4">
-              <a
-                href="#services"
-                className="text-foreground/80 hover:text-foreground transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Services
-              </a>
-              <a
-                href="#about"
-                className="text-foreground/80 hover:text-foreground transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </a>
-              <a
-                href="#testimonials"
-                className="text-foreground/80 hover:text-foreground transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Case Studies
-              </a>
-              <a
-                href="#contact"
-                className="text-foreground/80 hover:text-foreground transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </a>
-              <div className="pt-4 space-y-3">
-                <Button variant="outline" className="w-full" asChild>
-                  <a href="#contact">Book a Consult</a>
-                </Button>
-                <Button className="w-full shadow-wave" asChild>
-                  <a href="#offer">Start Your Refresh</a>
-                </Button>
-              </div>
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   );
