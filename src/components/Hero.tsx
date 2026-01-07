@@ -2,41 +2,24 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-wave.jpg";
 import { useParallax } from "@/hooks/useParallax";
-
 const Hero = () => {
   const parallaxOffset = useParallax(0.3);
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="FoundryWave digital transformation - AI-powered web design and business automation for small businesses"
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
+        <img src={heroImage} alt="FoundryWave digital transformation - AI-powered web design and business automation for small businesses" className="w-full h-full object-cover" loading="eager" />
         <div className="absolute inset-0 bg-gradient-to-br from-[hsl(215,100%,8%)]/95 via-[hsl(215,80%,12%)]/90 to-[hsl(193,100%,42%)]/30" />
       </div>
 
       {/* Animated Wave Pattern with Parallax */}
-      <div 
-        className="absolute inset-0 z-0 opacity-20"
-        style={{ transform: `translateY(${parallaxOffset * 0.5}px)` }}
-      >
+      <div className="absolute inset-0 z-0 opacity-20" style={{
+      transform: `translateY(${parallaxOffset * 0.5}px)`
+    }}>
         <svg className="absolute bottom-0 w-full h-64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path
-            fill="hsl(193, 100%, 42%)"
-            fillOpacity="0.3"
-            d="M0,160L48,144C96,128,192,96,288,101.3C384,107,480,149,576,154.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-          >
-            <animate
-              attributeName="d"
-              dur="15s"
-              repeatCount="indefinite"
-              values="M0,160L48,144C96,128,192,96,288,101.3C384,107,480,149,576,154.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
+          <path fill="hsl(193, 100%, 42%)" fillOpacity="0.3" d="M0,160L48,144C96,128,192,96,288,101.3C384,107,480,149,576,154.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            <animate attributeName="d" dur="15s" repeatCount="indefinite" values="M0,160L48,144C96,128,192,96,288,101.3C384,107,480,149,576,154.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
                       M0,192L48,181.3C96,171,192,149,288,154.7C384,160,480,192,576,197.3C672,203,768,181,864,170.7C960,160,1056,160,1152,170.7C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
-                      M0,160L48,144C96,128,192,96,288,101.3C384,107,480,149,576,154.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            />
+                      M0,160L48,144C96,128,192,96,288,101.3C384,107,480,149,576,154.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
           </path>
         </svg>
       </div>
@@ -48,7 +31,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-6">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Your Unique Voice, Amplified at Scale</span>
-            <span className="text-sm font-medium text-primary">AI-Powered Technology Solutions</span>
+            
           </div>
 
           {/* Headline */}
@@ -69,22 +52,13 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-lg px-8 py-6 shadow-wave hover:shadow-xl transition-all group"
-              asChild
-            >
+            <Button size="lg" className="text-lg px-8 py-6 shadow-wave hover:shadow-xl transition-all group" asChild>
               <a href="#cta-refresh" aria-label="Start your website refresh">
                 Get Started
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
-              asChild
-            >
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm" asChild>
               <a href="#contact" aria-label="Join our newsletter">Join Newsletter</a>
             </Button>
           </div>
@@ -109,8 +83,6 @@ const Hero = () => {
 
       {/* Bottom Gradient Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
