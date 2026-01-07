@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.webp";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,12 +24,12 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center space-x-2">
-            <div className="flex items-center">
-              <span className="text-2xl font-bold bg-gradient-wave bg-clip-text text-transparent">
-                FoundryWave
-              </span>
-            </div>
+          <a href="/" className="flex items-center">
+            <img 
+              src={logo} 
+              alt="FoundryWave - AI-ready web design studio" 
+              className="h-10 w-auto brightness-0 invert"
+            />
           </a>
 
           {/* Desktop Navigation */}
