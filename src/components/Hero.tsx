@@ -2,6 +2,30 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-wave.jpg";
 import { useParallax } from "@/hooks/useParallax";
+
+// Media logos
+import logoAbc from "@/assets/logos/abc.png";
+import logoNbc from "@/assets/logos/nbc.png";
+import logoCbs from "@/assets/logos/cbs.png";
+import logoCnn from "@/assets/logos/cnn.png";
+import logoFox from "@/assets/logos/fox.png";
+import logoEntrepreneur from "@/assets/logos/entrepreneur.png";
+import logoFastCompany from "@/assets/logos/fast-company.png";
+import logoInfluencive from "@/assets/logos/influencive.png";
+import logoInc from "@/assets/logos/inc.png";
+
+const mediaLogos = [
+  { src: logoAbc, alt: "ABC" },
+  { src: logoNbc, alt: "NBC" },
+  { src: logoCbs, alt: "CBS" },
+  { src: logoCnn, alt: "CNN" },
+  { src: logoFox, alt: "FOX" },
+  { src: logoEntrepreneur, alt: "Entrepreneur" },
+  { src: logoFastCompany, alt: "Fast Company" },
+  { src: logoInfluencive, alt: "Influencive" },
+  { src: logoInc, alt: "Inc." },
+];
+
 const Hero = () => {
   const parallaxOffset = useParallax(0.3);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -80,17 +104,15 @@ const Hero = () => {
           {/* As Seen In */}
           <div className="mt-16">
             <p className="text-white/50 text-xs uppercase tracking-widest mb-6">As Seen In</p>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-white/60">
-              <span className="font-semibold text-lg tracking-wide">ABC</span>
-              <span className="font-semibold text-lg tracking-wide">NBC</span>
-              <span className="font-semibold text-lg tracking-wide">CBS</span>
-              <span className="font-semibold text-lg tracking-wide">CNN</span>
-              <span className="font-semibold text-lg tracking-wide hidden sm:inline">Huffington Post</span>
-              <span className="font-semibold text-lg tracking-wide hidden sm:inline">USA Today</span>
-              <span className="font-semibold text-lg tracking-wide hidden md:inline">Entrepreneur</span>
-              <span className="font-semibold text-lg tracking-wide hidden md:inline">Fast Company</span>
-              <span className="font-semibold text-lg tracking-wide hidden lg:inline">Influencive</span>
-              <span className="font-semibold text-lg tracking-wide hidden lg:inline">Inc.</span>
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+              {mediaLogos.map((logo) => (
+                <img 
+                  key={logo.alt}
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  className="h-6 sm:h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
+                />
+              ))}
             </div>
           </div>
         </div>
