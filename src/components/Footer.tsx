@@ -63,7 +63,7 @@ const Footer = () => {
 
         {/* Partner Section */}
         <div className="border-t border-white/10 pt-8 mb-8 flex flex-col items-center gap-4">
-          <p className="text-white/70 text-center text-xl">Proud partner of the Robert W. Maxwell Football Club</p>
+          <p className="text-white/70 text-center text-xl">The Official Website Partner of the Robert W. Maxwell Football Club</p>
           <a href="https://maxwellfootballclub.org" target="_blank" rel="noopener noreferrer">
             <img src={maxwellLogo} alt="Maxwell Football Club" className="h-40 w-auto hover:opacity-80 transition-opacity" />
           </a>
