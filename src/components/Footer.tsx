@@ -79,7 +79,7 @@ const Footer = () => {
             <img 
               src={maxwellLogo} 
               alt="Maxwell Football Club" 
-              className="h-20 w-auto hover:opacity-80 transition-opacity"
+              className="h-32 w-auto hover:opacity-80 transition-opacity"
             />
           </a>
         </div>
