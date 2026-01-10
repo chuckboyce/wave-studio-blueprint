@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.webp";
+import maxwellLogo from "@/assets/logos/maxwell-football-club.png";
 
 const Footer = () => {
   return (
@@ -67,6 +68,20 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Partner Section */}
+        <div className="border-t border-white/10 pt-8 mb-8 flex flex-col items-center gap-4">
+          <p className="text-sm text-white/70 text-center">
+            Proud partner and web creator of the Maxwell Football Club
+          </p>
+          <a href="https://maxwellfootballclub.org" target="_blank" rel="noopener noreferrer">
+            <img 
+              src={maxwellLogo} 
+              alt="Maxwell Football Club" 
+              className="h-20 w-auto hover:opacity-80 transition-opacity"
+            />
+          </a>
         </div>
 
         {/* Bottom Bar */}
